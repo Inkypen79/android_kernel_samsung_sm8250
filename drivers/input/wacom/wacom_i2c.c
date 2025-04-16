@@ -1110,7 +1110,7 @@ static void wacom_i2c_cover_handler(struct wacom_i2c *wac_i2c, char *data)
 
 	input_info(true, &wac_i2c->client->dev, "%s: cover status %d\n", __func__, change_status);
 	input_report_switch(wac_i2c->input_dev,
-		SW_FLIP, change_status);
+		SW_LID, change_status);
 	input_sync(wac_i2c->input_dev);
 	wac_i2c->flip_state = change_status;
 }
@@ -1805,7 +1805,7 @@ static void wacom_i2c_set_input_values(struct wacom_i2c *wac_i2c,
 	input_set_capability(input_dev, EV_KEY, KEY_HOMEPAGE);
 
 	/* flip cover */
-	input_set_capability(input_dev, EV_SW, SW_FLIP);
+	input_set_capability(input_dev, EV_SW, SW_LID);
 
 	input_set_drvdata(input_dev, wac_i2c);
 }
